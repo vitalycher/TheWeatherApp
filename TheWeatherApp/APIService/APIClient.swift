@@ -24,7 +24,7 @@ class APIClient: ErrorExtracting {
     static var shared = APIClient()
 
     var extractor: Extractor = ResponseErrorExtractor()
-    private var jsonEncoding: ParameterEncoding = JSONEncoding.default
+    private var jsonEncoding: ParameterEncoding = URLEncoding.default
     
     convenience init(extractor: Extractor) {
         self.init()

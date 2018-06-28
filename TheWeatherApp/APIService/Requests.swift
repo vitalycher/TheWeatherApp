@@ -8,11 +8,8 @@
 
 import Foundation
 
-enum DoorType {
-    case glass
-    case iron
-}
-
 struct Requests {
-
+    static func makeWeatherRequest(withParameters parameters: [String : Any]) -> Request<Forecast> {
+        return Request<Forecast>(jsonUrlString: "http://api.openweathermap.org/data/2.5/forecast", method: .get, parameters: parameters, header: nil)
+    }
 }
