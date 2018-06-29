@@ -28,7 +28,8 @@ class ViewController: UIViewController {
         APIClient.shared.perform(Requests.makeWeatherRequest(withParameters: parameters)) { (completion) in
             switch completion {
             case .failure(let error): print(error)
-            case .singleObject(let forecast): print(forecast?.city?.name)
+            case .singleObject(let forecast): print(forecast?.weatherDetails?.first?.generalParameters?.averageTemperature)
+                print(forecast?.city)
             default: break
             }
         }

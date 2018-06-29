@@ -9,5 +9,9 @@
 import Foundation
 
 class CloudPercentage: Decodable {
-    var all: Int?
+    var cloudiness: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case cloudiness = "all"
+    }
 }

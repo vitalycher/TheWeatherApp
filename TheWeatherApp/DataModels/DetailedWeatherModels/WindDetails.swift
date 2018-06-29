@@ -9,6 +9,11 @@
 import Foundation
 
 class WindDetails: Decodable {
-    var speed: Float?
-    var deg: Float?
+    var speed: Double?
+    var degrees: Double?
+    
+    enum CodingKeys: String, CodingKey {
+        case speed
+        case degrees = "deg"
+    }
 }

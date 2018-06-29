@@ -9,9 +9,17 @@
 import Foundation
 
 class WeatherDetails: Decodable {
-    var main: MainWeatherParameters?
-    var weather: [VerbalWeatherDescription]?
-    var clouds: CloudPercentage?
+    var generalParameters: MainWeatherParameters?
+    var verbalDescription: [VerbalWeatherDescription]?
+    var cloudPercentage: CloudPercentage?
     var wind: WindDetails?
-    var dt_txt: String?
+    var dateOfCalculation: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case generalParameters = "main"
+        case verbalDescription = "weather"
+        case cloudPercentage = "clouds"
+        case wind
+        case dateOfCalculation = "dt_txt"
+    }
 }

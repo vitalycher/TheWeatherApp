@@ -10,5 +10,10 @@ import Foundation
 
 class Forecast: Decodable {
     var city: City?
-    var list: [WeatherDetails]?
+    var weatherDetails: [WeatherDetails]?
+    
+    enum CodingKeys: String, CodingKey {
+        case city
+        case weatherDetails = "list"
+    }
 }
