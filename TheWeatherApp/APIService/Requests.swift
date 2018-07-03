@@ -1,9 +1,9 @@
 //
 //  Requests.swift
-//  111Secuirty
+//  TheWeatherApp
 //
-//  Created by Vitaly Chernysh on 1/26/18.
-//  Copyright © 2018 Egor Bozko. All rights reserved.
+//  Created by Vitaly Chernysh on 02.07.2018.
+//  Copyright © 2018 Vitaly Chernysh. All rights reserved.
 //
 
 import Foundation

@@ -1,5 +1,5 @@
 //
-//  MainWeatherParameters.swift
+//  GeneralWeatherParameters.swift
 //  TheWeatherApp
 //
 //  Created by Vitaly Chernysh on 28.06.2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MainWeatherParameters: Decodable {
+class GeneralWeatherParameters: Decodable {
     var averageTemperature: Double?
     var minimumTemperature: Double?
     var maximumTemperature: Double?

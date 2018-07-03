@@ -1,9 +1,9 @@
 //
-//  APIService.swift
-//  111Secuirty
+//  APIClient.swift
+//  TheWeatherApp
 //
-//  Created by Vitaly Chernysh on 1/26/18.
-//  Copyright © 2018 Egor Bozko. All rights reserved.
+//  Created by Vitaly Chernysh on 04.07.2018.
+//  Copyright © 2018 Vitaly Chernysh. All rights reserved.
 //
 
 import Foundation
@@ -22,7 +22,7 @@ class APIClient: ErrorExtracting {
     }
     
     static var shared = APIClient()
-
+    
     var extractor: Extractor = ResponseErrorExtractor()
     private var jsonEncoding: ParameterEncoding = URLEncoding.default
     
@@ -44,7 +44,7 @@ class APIClient: ErrorExtracting {
     
     func perform<T: Decodable>(_ request: Request<T>, completion: @escaping (Completion<T>) -> Void) {
         Alamofire.request(request.jsonUrlString, method: request.method, parameters: request.parameters, encoding: jsonEncoding, headers: request.header).responseJSON { response in
-
+            
             if let error = self.extractor.error(from: response) {
                 completion(.failure(error))
                 return

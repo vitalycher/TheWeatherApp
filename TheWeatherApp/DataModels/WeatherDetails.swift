@@ -9,7 +9,7 @@
 import Foundation
 
 class WeatherDetails: Decodable {
-    var generalParameters: MainWeatherParameters?
+    var generalParameters: GeneralWeatherParameters?
     var verbalDescription: [VerbalWeatherDescription]?
     var cloudPercentage: CloudPercentage?
     var wind: WindDetails?

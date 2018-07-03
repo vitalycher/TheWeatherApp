@@ -46,5 +46,11 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Program requires your current location to make an accurate forecast</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Program requires your current location to make an accurate forecast</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Program requires your current location to make an accurate forecast</string>
 </dict>
 </plist>
