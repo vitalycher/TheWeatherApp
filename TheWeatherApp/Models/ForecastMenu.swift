@@ -12,13 +12,14 @@ import RxSwift
 import CoreLocation
 import Alamofire
 
-protocol ForecastMenuDelegate: class {
-    func forecastMenu(_ menu: ForecastMenu, didFailFetchingWithError error: Error)
-}
-
 class ForecastMenu {
+    
+    var didRecieveError: Observable<Error> {
+        return errorPublishSubject.asObservable()
+    }
 
-    weak var delegate: ForecastMenuDelegate?
+    private var errorPublishSubject = PublishSubject<Error>()
+
     private(set) var forecast = BehaviorRelay(value: Forecast())
     private let disposeBag = DisposeBag()
     private var forecastDaysAmount = BehaviorRelay(value: ForecastProviderArrangements.minimumDaysForecast)
@@ -55,7 +56,7 @@ class ForecastMenu {
         APIClient.shared.perform(Requests.makeWeatherRequest(withParameters: parameters)) { (completion) in
             switch completion {
             case .failure(let error):
-                self.delegate?.forecastMenu(self, didFailFetchingWithError: error)
+                self.errorPublishSubject.onNext(error)
             case .singleObject(let forecast):
                 if let forecast = forecast {
                     self.forecast.accept(forecast)
