@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,20 +19,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZfK-AG-IM7">
-                                <rect key="frame" x="128" y="319" width="118" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="114" id="1SM-Lv-aVd"/>
-                                </constraints>
+                                <rect key="frame" x="48" y="320" width="279" height="31"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </slider>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mTO-eq-DXE">
+                                <rect key="frame" x="0.0" y="70" width="375" height="200"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="40O-qS-oxL">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ZfK-AG-IM7" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3sa-8y-XvW"/>
-                            <constraint firstItem="ZfK-AG-IM7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Zvt-h7-68G"/>
+                            <constraint firstItem="ZfK-AG-IM7" firstAttribute="top" secondItem="mTO-eq-DXE" secondAttribute="bottom" constant="50" id="LBb-bI-rCi"/>
+                            <constraint firstItem="mTO-eq-DXE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Qbl-x5-3cQ"/>
+                            <constraint firstItem="mTO-eq-DXE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="RJa-h5-brt"/>
+                            <constraint firstItem="mTO-eq-DXE" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Z2S-Ic-3hU"/>
+                            <constraint firstItem="mTO-eq-DXE" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.3" id="bTd-2N-Tu8"/>
+                            <constraint firstItem="ZfK-AG-IM7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="q4P-A4-FH7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZfK-AG-IM7" secondAttribute="trailing" constant="50" id="wkG-oM-Jpk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="mTO-eq-DXE" id="CRk-WS-ykK"/>
                         <outlet property="slider" destination="ZfK-AG-IM7" id="de0-SW-vym"/>
                     </connections>
                 </viewController>
