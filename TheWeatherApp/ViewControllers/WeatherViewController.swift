@@ -22,6 +22,7 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        forecastMenu.delegate = self
         locationService.delegate = self
         locationService.authorizeAndFetchCoordinates()
 
@@ -35,8 +36,8 @@ class WeatherViewController: UIViewController {
 
     private func configureForecastMenu(withCoordinate coordinate: CLLocationCoordinate2D) {
         forecastMenu.performInitialFetching(withCoordinate: coordinate)
-        forecastMenu.forecast.skip(1).subscribe(onNext: { forecast in
-            print(forecast.city?.name)
+        forecastMenu.forecast.skip(1).subscribe({ forecast in
+            print(forecast.element?.city?.name)
         }).disposed(by: disposeBag)
     }
 
@@ -55,5 +56,11 @@ extension WeatherViewController: LocationServiceDelegate {
     }
     func locationServiceDidRejectUpdatingCoordinate(service: LocationService) {
         configureForecastMenu(withCoordinate: CLLocationCoordinate2D.defaultCoordinate)
+    }
+}
+
+extension WeatherViewController: ForecastMenuDelegate {
+    func forecastMenu(_ menu: ForecastMenu, didFailFetchingWithError error: Error) {
+        print(error.filteredDescription)
     }
 }

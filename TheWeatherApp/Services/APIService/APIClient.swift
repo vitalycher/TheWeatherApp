@@ -69,7 +69,6 @@ class APIClient: ErrorExtracting {
                     completion(.singleObject(decodedSingleObject))
                 }
             } catch {
-                print(error)
                 completion(.failure(ApplicationError(code: InternalErrors.mappingError)))
             }
         }
