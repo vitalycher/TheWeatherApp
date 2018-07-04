@@ -14,36 +14,39 @@ import Alamofire
 
 class ForecastMenu {
 
+    private(set) var forecast = BehaviorRelay(value: Forecast())
     private let disposeBag = DisposeBag()
+    private var forecastDaysAmount = BehaviorRelay(value: ForecastProviderArrangements.minimumDaysForecast)
+    private var userCoordinate: CLLocationCoordinate2D?
 
-    var forecast = BehaviorRelay(value: Forecast())
-    var forecastDaysAmount = BehaviorRelay(value: 0)
-    var userCoordinate: CLLocationCoordinate2D
-
-    private let forecastProviderKey = "02d119c82f4e09478c5d4583a67d25aa"
-    
-    init(coordinate: CLLocationCoordinate2D, forecastDaysAmount: Int) {
-        self.userCoordinate = coordinate
-        self.forecastDaysAmount.accept(forecastDaysAmount)
-        
-        self.forecastDaysAmount.asObservable().subscribe(onNext: { _ in
+    func performInitialFetching(withCoordinate coordinate: CLLocationCoordinate2D) {
+        userCoordinate = coordinate
+        forecastDaysAmount.skip(1).subscribe(onNext: { _ in
             self.fetchForecast()
         }).disposed(by: disposeBag)
     }
-    
+
+    func setForecastDaysAmount(with daysAmount: Int) {
+        forecastDaysAmount.accept(daysAmount)
+    }
+
+    func currentForecastDaysAmount() -> Int {
+        return forecastDaysAmount.value
+    }
+
     private func fetchForecast() {
         guard Connectivity.isInternetReachable else {
             //Fetch forecast from CoreData
             return
         }
-        
+
         var parameters = [String : Any]()
 
-        parameters["lat"] = userCoordinate.latitude
-        parameters["lon"] = userCoordinate.longitude
+        parameters["lat"] = userCoordinate?.latitude
+        parameters["lon"] = userCoordinate?.longitude
         parameters["cnt"] = forecastDaysAmount.value
-        parameters["APPID"] = forecastProviderKey
-        
+        parameters["APPID"] = ForecastProviderArrangements.accessKey
+
         APIClient.shared.perform(Requests.makeWeatherRequest(withParameters: parameters)) { (completion) in
             switch completion {
             case .failure(let error):
@@ -56,5 +59,5 @@ class ForecastMenu {
             }
         }
     }
-    
+
 }
