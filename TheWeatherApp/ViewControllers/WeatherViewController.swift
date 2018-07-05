@@ -15,7 +15,7 @@ class WeatherViewController: UIViewController {
 
     @IBOutlet private weak var slider: UISlider!
     @IBOutlet private weak var collectionView: UICollectionView!
-    
+
     private let disposeBag = DisposeBag()
     private let locationService = LocationService()
     private var forecastMenu = ForecastMenu()
@@ -25,7 +25,8 @@ class WeatherViewController: UIViewController {
 
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(UINib(nibName: "GeneralForecastCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "GeneralForecastCollectionViewCell")
+        collectionView.register(UINib(nibName: "GeneralForecastCollectionViewCell", bundle: nil),
+                                forCellWithReuseIdentifier: "GeneralForecastCollectionViewCell")
 
         locationService.delegate = self
         locationService.authorizeAndFetchCoordinates()
@@ -33,32 +34,35 @@ class WeatherViewController: UIViewController {
         configureSliderParameters()
 
         slider.rx.value.subscribe(onNext: { sliderValue in
-            self.slider.value = round(sliderValue)
-//            print(round(sliderValue))
-//            print(sliderValue)
-            self.forecastMenu.setForecastDaysAmount(with: Int(round(sliderValue)))
+            let roundedValue = round(sliderValue)
+            self.slider.value = roundedValue
+            self.forecastMenu.setForecastDaysAmount(with: Int(roundedValue))
         }).disposed(by: disposeBag)
     }
 
     private func configureForecastMenu(withCoordinate coordinate: CLLocationCoordinate2D) {
-        forecastMenu.performInitialFetching(withCoordinate: coordinate)
-        
-        forecastMenu.forecast.skip(1).subscribe { forecast in
+        forecastMenu.fetchForecast(with: coordinate)
+        createForecastMenuSubscriptions()
+    }
+    
+    private func createForecastMenuSubscriptions() {
+        forecastMenu.weatherDetailsForSelectedPeriod.subscribe { forecast in
+            print(forecast)
             self.collectionView.reloadData()
-        }.disposed(by: disposeBag)
-        
+            }.disposed(by: disposeBag)
+
         forecastMenu.didRecieveError.subscribe { errorEvent in
             if let error = errorEvent.element {
                 print(error.filteredDescription)
             }
-        }.disposed(by: disposeBag)
+            }.disposed(by: disposeBag)
     }
 
     private func configureSliderParameters() {
         slider.minimumValue = Float(ForecastProviderArrangements.minimumDaysForecast)
         slider.maximumValue = Float(ForecastProviderArrangements.maximumDaysForecast)
         slider.isContinuous = false
-        slider.value = Float(forecastMenu.currentForecastDaysAmount())
+        slider.value = Float(forecastMenu.forecastDaysAmount)
     }
 
 }
@@ -68,7 +72,7 @@ extension WeatherViewController: LocationServiceDelegate {
     func locationService(_ service: LocationService, didFetchCoordinate coordinate: CLLocationCoordinate2D) {
         configureForecastMenu(withCoordinate: coordinate)
     }
-    
+
     func locationServiceDidRejectUpdatingCoordinate(service: LocationService) {
         configureForecastMenu(withCoordinate: CLLocationCoordinate2D.defaultCoordinate)
     }
@@ -78,16 +82,15 @@ extension WeatherViewController: LocationServiceDelegate {
 extension WeatherViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return forecastMenu.currentForecastDaysAmount()
+        return forecastMenu.weatherDetailsForSelectedPeriod.value.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GeneralForecastCollectionViewCell", for: indexPath) as? GeneralForecastCollectionViewCell {
-            return cell
-        } else {
-            return UICollectionViewCell()
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GeneralForecastCollectionViewCell", for: indexPath) as! GeneralForecastCollectionViewCell
+        let weatherDetails = forecastMenu.forecast.value.weatherDetails
+        cell.configure(with: ForecastOverviewViewModel.init(weatherDetails?[indexPath.row]))
+        return cell
     }
 
 }

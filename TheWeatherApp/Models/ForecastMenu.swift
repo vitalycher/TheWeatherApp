@@ -13,34 +13,30 @@ import CoreLocation
 import Alamofire
 
 class ForecastMenu {
-    
+
     var didRecieveError: Observable<Error> {
         return errorPublishSubject.asObservable()
     }
 
+    private(set) var forecast = BehaviorRelay(value: Forecast())
+    private(set) var weatherDetailsForSelectedPeriod = BehaviorRelay(value: [WeatherDetails()])
+    private(set) var forecastDaysAmount = ForecastProviderArrangements.minimumDaysForecast
+
+    private let disposeBag = DisposeBag()
     private var errorPublishSubject = PublishSubject<Error>()
 
-    private(set) var forecast = BehaviorRelay(value: Forecast())
-    private let disposeBag = DisposeBag()
-    private var forecastDaysAmount = BehaviorRelay(value: ForecastProviderArrangements.minimumDaysForecast)
-    private var userCoordinate: CLLocationCoordinate2D?
-
-    func performInitialFetching(withCoordinate coordinate: CLLocationCoordinate2D) {
-        userCoordinate = coordinate
-        forecastDaysAmount.skip(1).subscribe(onNext: { _ in
-            self.fetchForecast()
-        }).disposed(by: disposeBag)
+    private func setWeatherDetails(withDaysAmount daysAmount: Int) {
+        if let weatherDetails = forecast.value.weatherDetails?.prefix(forecastDaysAmount * ForecastProviderArrangements.numberOfForecastsForSingleDay) {
+            weatherDetailsForSelectedPeriod.accept(Array(weatherDetails))
+        }
     }
 
     func setForecastDaysAmount(with daysAmount: Int) {
-        forecastDaysAmount.accept(daysAmount)
+        forecastDaysAmount = daysAmount
+        setWeatherDetails(withDaysAmount: daysAmount)
     }
 
-    func currentForecastDaysAmount() -> Int {
-        return forecastDaysAmount.value
-    }
-
-    private func fetchForecast() {
+    func fetchForecast(with coordinate: CLLocationCoordinate2D) {
         guard Connectivity.isInternetReachable else {
             //Fetch forecast from CoreData
             return
@@ -48,10 +44,10 @@ class ForecastMenu {
 
         var parameters = [String : Any]()
 
-        parameters["lat"] = userCoordinate?.latitude
-        parameters["lon"] = userCoordinate?.longitude
-        parameters["cnt"] = forecastDaysAmount.value
+        parameters["lat"] = coordinate.latitude
+        parameters["lon"] = coordinate.longitude
         parameters["APPID"] = ForecastProviderArrangements.accessKey
+        parameters["units"] = ForecastProviderArrangements.celsiusFormat
 
         APIClient.shared.perform(Requests.makeWeatherRequest(withParameters: parameters)) { (completion) in
             switch completion {
@@ -60,6 +56,7 @@ class ForecastMenu {
             case .singleObject(let forecast):
                 if let forecast = forecast {
                     self.forecast.accept(forecast)
+                    self.setWeatherDetails(withDaysAmount: self.forecastDaysAmount)
                 }
             default: break
             }

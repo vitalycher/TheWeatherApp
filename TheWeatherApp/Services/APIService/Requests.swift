@@ -10,6 +10,6 @@ import Foundation
 
 struct Requests {
     static func makeWeatherRequest(withParameters parameters: [String : Any]) -> Request<Forecast> {
-        return Request<Forecast>(jsonUrlString: "http://api.openweathermap.org/data/2.5/forecast", method: .get, parameters: parameters, header: nil)
+        return Request<Forecast>(jsonUrlString: ForecastProviderArrangements.baseURL, method: .get, parameters: parameters, header: nil)
     }
 }
