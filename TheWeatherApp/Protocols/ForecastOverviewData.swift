@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ForecastOverviewData {
     var date: String { get }
@@ -14,4 +15,5 @@ protocol ForecastOverviewData {
     var minumumTemperature: String { get }
     var maximumTemperature: String { get }
     var humidity: String { get }
+    var weatherIcon: UIImage { get }
 }

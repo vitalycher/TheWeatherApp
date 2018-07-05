@@ -26,8 +26,23 @@ class ForecastMenu {
     private var errorPublishSubject = PublishSubject<Error>()
 
     private func setWeatherDetails(withDaysAmount daysAmount: Int) {
-        if let weatherDetails = forecast.value.weatherDetails?.prefix(forecastDaysAmount * ForecastProviderArrangements.numberOfForecastsForSingleDay) {
-            weatherDetailsForSelectedPeriod.accept(Array(weatherDetails))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let currentDate = Date()
+        let daysOffset = daysAmount - 1
+
+        
+        if let weatherDetails = forecast.value.weatherDetails {
+            let filteredWeatherDetailes = Array(weatherDetails).filter { weatherDetail in
+                if let dateOfForecastString = weatherDetail.dateOfCalculation,
+                    let forecastDate = dateFormatter.date(from: dateOfForecastString),
+                    let maximumDate = Calendar.current.date(byAdding: .day, value: daysOffset, to: currentDate)?.endOfDay {
+                    return forecastDate.isBetween(currentDate, and: maximumDate)
+                } else {
+                    return false
+                }
+            }
+            weatherDetailsForSelectedPeriod.accept(Array(filteredWeatherDetailes))
         }
     }
 

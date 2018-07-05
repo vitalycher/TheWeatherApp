@@ -17,6 +17,8 @@
 		5912885F20ED48B200F3AE48 /* GeneralForecastCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5912885D20ED48B200F3AE48 /* GeneralForecastCollectionViewCell.xib */; };
 		5912886220EE157400F3AE48 /* ForecastOverviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5912886120EE157400F3AE48 /* ForecastOverviewData.swift */; };
 		5912886420EE16C800F3AE48 /* ForecastOverviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5912886320EE16C800F3AE48 /* ForecastOverviewViewModel.swift */; };
+		5912886820EE626800F3AE48 /* Date + IsBetweenTwoDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5912886720EE626800F3AE48 /* Date + IsBetweenTwoDates.swift */; };
+		5912886A20EE6EFE00F3AE48 /* Date + EndOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5912886920EE6EFE00F3AE48 /* Date + EndOfDay.swift */; };
 		59A301DD20E4E9AC007308B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A301DC20E4E9AC007308B1 /* AppDelegate.swift */; };
 		59A301DF20E4E9AC007308B1 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A301DE20E4E9AC007308B1 /* WeatherViewController.swift */; };
 		59A301E220E4E9AC007308B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59A301E020E4E9AC007308B1 /* Main.storyboard */; };
@@ -48,6 +50,8 @@
 		5912885D20ED48B200F3AE48 /* GeneralForecastCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeneralForecastCollectionViewCell.xib; sourceTree = "<group>"; };
 		5912886120EE157400F3AE48 /* ForecastOverviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastOverviewData.swift; sourceTree = "<group>"; };
 		5912886320EE16C800F3AE48 /* ForecastOverviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastOverviewViewModel.swift; sourceTree = "<group>"; };
+		5912886720EE626800F3AE48 /* Date + IsBetweenTwoDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + IsBetweenTwoDates.swift"; sourceTree = "<group>"; };
+		5912886920EE6EFE00F3AE48 /* Date + EndOfDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + EndOfDay.swift"; sourceTree = "<group>"; };
 		59A301D920E4E9AC007308B1 /* TheWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59A301DC20E4E9AC007308B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59A301DE20E4E9AC007308B1 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				5912885020ECBCA200F3AE48 /* CLLocationCoordinate2D + DefaultCoordinate.swift */,
+				5912886720EE626800F3AE48 /* Date + IsBetweenTwoDates.swift */,
+				5912886920EE6EFE00F3AE48 /* Date + EndOfDay.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -341,12 +347,14 @@
 				59A301DF20E4E9AC007308B1 /* WeatherViewController.swift in Sources */,
 				59C1C7F020E518B700476E6E /* VerbalWeatherDescription.swift in Sources */,
 				59C1C7EA20E517B400476E6E /* Forecast.swift in Sources */,
+				5912886A20EE6EFE00F3AE48 /* Date + EndOfDay.swift in Sources */,
 				59C1C7F420E52B0300476E6E /* WeatherDetails.swift in Sources */,
 				59C1C80120EB922700476E6E /* ForecastMenu.swift in Sources */,
 				59C1C7F920E531E300476E6E /* MainWeatherParameters.swift in Sources */,
 				59A301DD20E4E9AC007308B1 /* AppDelegate.swift in Sources */,
 				5912885E20ED48B200F3AE48 /* GeneralForecastCollectionViewCell.swift in Sources */,
 				59C1C7EC20E517E600476E6E /* City.swift in Sources */,
+				5912886820EE626800F3AE48 /* Date + IsBetweenTwoDates.swift in Sources */,
 				59C1C7E520E4EC5B00476E6E /* Error.swift in Sources */,
 				5912884F20EC8DEE00F3AE48 /* LocationService.swift in Sources */,
 				5912885120ECBCA200F3AE48 /* CLLocationCoordinate2D + DefaultCoordinate.swift in Sources */,
