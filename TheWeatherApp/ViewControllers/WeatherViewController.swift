@@ -50,7 +50,6 @@ class WeatherViewController: UIViewController {
 
     private func createForecastMenuSubscriptions() {
         forecastMenu.weatherDetailsForSelectedPeriod.subscribe { forecast in
-            print(forecast)
             self.collectionView.reloadData()
             }.disposed(by: disposeBag)
 
@@ -101,7 +100,10 @@ extension WeatherViewController: UICollectionViewDataSource {
 
 extension WeatherViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let weatherDetails = forecastMenu.weatherDetailsForSelectedPeriod.value[indexPath.row]
+        let detailedForecastViewController = DetailedForecastViewController()
+        detailedForecastViewController.weatherDetails = weatherDetails
+        navigationController?.pushViewController(detailedForecastViewController, animated: true)
     }
 }
 

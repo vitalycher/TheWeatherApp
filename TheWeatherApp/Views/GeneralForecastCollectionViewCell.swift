@@ -16,15 +16,15 @@ class GeneralForecastCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var minimumTemperatureLabel: UILabel!
     @IBOutlet private weak var maximumTemperatureLabel: UILabel!
     @IBOutlet private weak var humidityLabel: UILabel!
-    @IBOutlet weak var tapForDetailsLabel: UILabel!
-    
+    @IBOutlet private weak var tapForDetailsLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
         layer.cornerRadius = 10.0
         tapForDetailsLabel.text = NSLocalizedString("Tap for details", comment: "")
     }
-    
+
     func configure(with dataProvider: ForecastOverviewData) {
         dateLabel.text = dataProvider.date
         verbalDescriptionLabel.text = dataProvider.verbalDescription
