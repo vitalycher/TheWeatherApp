@@ -91,8 +91,8 @@ extension WeatherViewController: UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GeneralForecastCollectionViewCell",
                                                       for: indexPath) as! GeneralForecastCollectionViewCell
-        let weatherDetails = forecastMenu.forecast.weatherDetails
-        cell.configure(with: ForecastOverviewViewModel.init(weatherDetails?[indexPath.row]))
+        let weatherDetails = forecastMenu.weatherDetailsForSelectedPeriod.value
+        cell.configure(with: ForecastOverviewViewModel.init(weatherDetails[indexPath.row]))
         return cell
     }
 
@@ -101,8 +101,7 @@ extension WeatherViewController: UICollectionViewDataSource {
 extension WeatherViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let weatherDetails = forecastMenu.weatherDetailsForSelectedPeriod.value[indexPath.row]
-        let detailedForecastViewController = DetailedForecastViewController()
-        detailedForecastViewController.weatherDetails = weatherDetails
+        let detailedForecastViewController = DetailedForecastViewController(weatherDetails: weatherDetails)
         navigationController?.pushViewController(detailedForecastViewController, animated: true)
     }
 }
