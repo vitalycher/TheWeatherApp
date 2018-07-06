@@ -15,10 +15,11 @@ class WeatherViewController: UIViewController {
 
     @IBOutlet private weak var slider: UISlider!
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var currentDaysAmountLabel: UILabel!
 
     private let disposeBag = DisposeBag()
     private let locationService = LocationService()
-    private var forecastMenu = ForecastMenu()
+    private let forecastMenu = ForecastMenu()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,8 @@ class WeatherViewController: UIViewController {
             let roundedValue = round(sliderValue)
             self.slider.value = roundedValue
             self.forecastMenu.setForecastDaysAmount(with: Int(roundedValue))
+            self.currentDaysAmountLabel.text = NSLocalizedString("Showing forecast for \(Int(roundedValue)) day(s)",
+                comment: "")
         }).disposed(by: disposeBag)
     }
 
@@ -44,7 +47,7 @@ class WeatherViewController: UIViewController {
         forecastMenu.fetchForecast(with: coordinate)
         createForecastMenuSubscriptions()
     }
-    
+
     private func createForecastMenuSubscriptions() {
         forecastMenu.weatherDetailsForSelectedPeriod.subscribe { forecast in
             print(forecast)
@@ -87,8 +90,9 @@ extension WeatherViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GeneralForecastCollectionViewCell", for: indexPath) as! GeneralForecastCollectionViewCell
-        let weatherDetails = forecastMenu.forecast.value.weatherDetails
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GeneralForecastCollectionViewCell",
+                                                      for: indexPath) as! GeneralForecastCollectionViewCell
+        let weatherDetails = forecastMenu.forecast.weatherDetails
         cell.configure(with: ForecastOverviewViewModel.init(weatherDetails?[indexPath.row]))
         return cell
     }

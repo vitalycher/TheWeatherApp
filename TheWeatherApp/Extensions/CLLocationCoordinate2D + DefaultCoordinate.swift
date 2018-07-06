@@ -10,5 +10,6 @@ import Foundation
 import CoreLocation
 
 extension CLLocationCoordinate2D {
-    static let defaultCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: 37.3)!, longitude: CLLocationDegrees(exactly: -122.0)!)
+    static let defaultCoordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: 37.3)!,
+                                                          longitude: CLLocationDegrees(exactly: -122.0)!)
 }

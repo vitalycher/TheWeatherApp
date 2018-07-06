@@ -18,7 +18,7 @@ class ForecastMenu {
         return errorPublishSubject.asObservable()
     }
 
-    private(set) var forecast = BehaviorRelay(value: Forecast())
+    private(set) var forecast = Forecast()
     private(set) var weatherDetailsForSelectedPeriod = BehaviorRelay(value: [WeatherDetails()])
     private(set) var forecastDaysAmount = ForecastProviderArrangements.minimumDaysForecast
 
@@ -31,8 +31,7 @@ class ForecastMenu {
         let currentDate = Date()
         let daysOffset = daysAmount - 1
 
-        
-        if let weatherDetails = forecast.value.weatherDetails {
+        if let weatherDetails = forecast.weatherDetails {
             let filteredWeatherDetailes = Array(weatherDetails).filter { weatherDetail in
                 if let dateOfForecastString = weatherDetail.dateOfCalculation,
                     let forecastDate = dateFormatter.date(from: dateOfForecastString),
@@ -70,7 +69,7 @@ class ForecastMenu {
                 self.errorPublishSubject.onNext(error)
             case .singleObject(let forecast):
                 if let forecast = forecast {
-                    self.forecast.accept(forecast)
+                    self.forecast = forecast
                     self.setWeatherDetails(withDaysAmount: self.forecastDaysAmount)
                 }
             default: break
