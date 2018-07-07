@@ -1,15 +1,9 @@
-////
-////  ForecastOverviewViewModel.swift
-////  TheWeatherApp
-////
-////  Created by Vitaly Chernysh on 05.07.2018.
-////  Copyright © 2018 Vitaly Chernysh. All rights reserved.
-////
 //
-//import Foundation
-//import UIKit
+//  ForecastOverviewViewModel.swift
+//  TheWeatherApp
 //
-//struct ForecastOverviewViewModel: ForecastOverviewData {
+//  Created by Vitaly Chernysh on 05.07.2018.
+//  Copyright © 2018 Vitaly Chernysh. All rights reserved.
 //
 
 import Foundation
