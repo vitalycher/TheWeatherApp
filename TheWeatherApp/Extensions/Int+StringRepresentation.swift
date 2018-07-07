@@ -1,5 +1,5 @@
 //
-//  BinaryFloatingPoint+StringRepresentation.swift
+//  Int+StringRepresentation.swift
 //  TheWeatherApp
 //
 //  Created by Vitaly Chernysh on 07.07.2018.
@@ -8,10 +8,10 @@
 
 import Foundation
 
-extension BinaryFloatingPoint {
-
+extension Int {
+    
     var toString: String {
-        return String(Int(self))
+        return String(self)
     }
-
+    
 }

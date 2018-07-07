@@ -9,9 +9,11 @@
 import Foundation
 
 extension Date {
+
     var endOfDay: Date {
         var calendar = Calendar.current
         calendar.timeZone = TimeZone(secondsFromGMT: 0)!
         return calendar.date(bySettingHour: 23, minute: 59, second: 59, of: self)!
     }
+
 }

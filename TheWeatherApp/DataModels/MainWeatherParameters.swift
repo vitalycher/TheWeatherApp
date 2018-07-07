@@ -9,6 +9,7 @@
 import Foundation
 
 class GeneralWeatherParameters: Decodable {
+
     var averageTemperature: Double?
     var minimumTemperature: Double?
     var maximumTemperature: Double?
@@ -26,4 +27,5 @@ class GeneralWeatherParameters: Decodable {
         case groundLevelAtmoPressure = "grnd_level"
         case humidity
     }
+
 }

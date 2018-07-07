@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 class Forecast: Decodable {
+
     var city: City?
     var weatherDetails: [WeatherDetails]?
     
@@ -17,4 +18,5 @@ class Forecast: Decodable {
         case city
         case weatherDetails = "list"
     }
+
 }

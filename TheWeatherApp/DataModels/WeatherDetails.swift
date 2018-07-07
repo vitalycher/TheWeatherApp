@@ -9,6 +9,7 @@
 import Foundation
 
 class WeatherDetails: Decodable {
+
     var generalParameters: GeneralWeatherParameters?
     var verbalDescription: [VerbalWeatherDescription]?
     var cloudPercentage: CloudPercentage?
@@ -22,4 +23,5 @@ class WeatherDetails: Decodable {
         case wind
         case dateOfCalculation = "dt_txt"
     }
+
 }

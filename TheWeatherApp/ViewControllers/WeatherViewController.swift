@@ -99,17 +99,21 @@ extension WeatherViewController: UICollectionViewDataSource {
 }
 
 extension WeatherViewController: UICollectionViewDelegate {
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let weatherDetails = forecastMenu.weatherDetailsForSelectedPeriod.value[indexPath.row]
         let detailedForecastViewController = DetailedForecastViewController(weatherDetails: weatherDetails)
         navigationController?.pushViewController(detailedForecastViewController, animated: true)
     }
+
 }
 
 extension WeatherViewController: UICollectionViewDelegateFlowLayout {
+
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width * 0.4, height: collectionView.frame.height)
     }
+
 }

@@ -9,6 +9,8 @@
 import Foundation
 
 struct ForecastDetailedField {
+
     var title: String
     var description: String?
+
 }

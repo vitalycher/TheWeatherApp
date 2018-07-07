@@ -9,7 +9,9 @@
 import Foundation
 
 extension Date {
+
     func isBetween(_ leftDate: Date, and rightDate: Date) -> Bool {
         return (min(leftDate, rightDate) ... max(leftDate, rightDate)).contains(self)
     }
+
 }

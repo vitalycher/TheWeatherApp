@@ -9,5 +9,7 @@
 import Foundation
 
 class City: Decodable {
+
     var name: String?
+
 }

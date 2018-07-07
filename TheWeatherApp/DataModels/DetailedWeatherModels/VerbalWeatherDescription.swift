@@ -9,9 +9,11 @@
 import Foundation
 
 class VerbalWeatherDescription: Decodable {
+
     var headline: String?
     
     enum CodingKeys: String, CodingKey {
         case headline = "main"
     }
+
 }

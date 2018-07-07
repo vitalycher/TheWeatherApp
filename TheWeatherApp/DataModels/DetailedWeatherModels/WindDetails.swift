@@ -9,6 +9,7 @@
 import Foundation
 
 class WindDetails: Decodable {
+
     var speed: Double?
     var degrees: Double?
     
@@ -16,4 +17,5 @@ class WindDetails: Decodable {
         case speed
         case degrees = "deg"
     }
+
 }
