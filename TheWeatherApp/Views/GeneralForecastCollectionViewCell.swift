@@ -22,15 +22,15 @@ class GeneralForecastCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
 
         layer.cornerRadius = 10.0
-        tapForDetailsLabel.text = NSLocalizedString("Tap for details", comment: "")
+        tapForDetailsLabel.text = "Tap for details".localized
     }
 
     func configure(with dataProvider: ForecastOverviewData) {
         dateLabel.text = dataProvider.date
         verbalDescriptionLabel.text = dataProvider.verbalDescription
-        minimumTemperatureLabel.text = NSLocalizedString("MIN TEMPERATURE \n", comment: "") + dataProvider.minumumTemperature + "°C"
-        maximumTemperatureLabel.text = NSLocalizedString("MAX TEMPERATURE \n", comment: "") + dataProvider.maximumTemperature + "°C"
-        humidityLabel.text = NSLocalizedString("HUMIDITY \n", comment: "") + dataProvider.humidity + "%"
+        minimumTemperatureLabel.text = "MIN TEMPERATURE \n".localized + dataProvider.minumumTemperature + "°C"
+        maximumTemperatureLabel.text = "MAX TEMPERATURE \n".localized + dataProvider.maximumTemperature + "°C"
+        humidityLabel.text = "HUMIDITY \n".localized + dataProvider.humidity + "%"
         weatherIconImageView.image = dataProvider.weatherIcon
     }
 

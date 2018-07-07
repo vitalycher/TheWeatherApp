@@ -11,7 +11,7 @@ import Foundation
 extension Error {
     var filteredDescription: String {
         if let applicationError = self as? ApplicationError {
-            return NSLocalizedString("error.\(type(of: applicationError.code).domain).\(applicationError.code)", comment: "")
+            return "error.\(type(of: applicationError.code).domain).\(applicationError.code)".localized
         } else if let apiError = self as? APIError {
             return apiError.description
         } else {

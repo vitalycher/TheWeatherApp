@@ -19,14 +19,14 @@ struct ForecastOverviewViewModel: ForecastOverviewData {
     var weatherIcon: UIImage
 
     init(_ weatherDetails: WeatherDetails?) {
-        let undefinedValue = NSLocalizedString("Undefined", comment: "")
+        let undefinedValue = "Undefined".localized
         let weatherDescription = weatherDetails?.verbalDescription?.first?.headline ?? undefinedValue
 
         date = DisplayDateService.convertedString(from: weatherDetails?.dateOfCalculation) ?? undefinedValue
         verbalDescription = weatherDescription
-        minumumTemperature = String(Int(weatherDetails?.generalParameters?.minimumTemperature ?? 0.0))
-        maximumTemperature = String(Int(weatherDetails?.generalParameters?.maximumTemperature ?? 0.0))
-        humidity = String(Int(weatherDetails?.generalParameters?.humidity ?? 0.0))
+        minumumTemperature = weatherDetails?.generalParameters?.minimumTemperature?.toInteger.toString ?? undefinedValue
+        maximumTemperature = weatherDetails?.generalParameters?.maximumTemperature?.toInteger.toString ?? undefinedValue
+        humidity = weatherDetails?.generalParameters?.humidity?.toInteger.toString ?? undefinedValue
         
         switch weatherDescription {
         case "Clouds": weatherIcon = #imageLiteral(resourceName: "cloudy")

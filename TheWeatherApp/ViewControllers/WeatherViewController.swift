@@ -37,9 +37,8 @@ class WeatherViewController: UIViewController {
         slider.rx.value.subscribe(onNext: { sliderValue in
             let roundedValue = round(sliderValue)
             self.slider.value = roundedValue
-            self.forecastMenu.setForecastDaysAmount(with: Int(roundedValue))
-            self.currentDaysAmountLabel.text = NSLocalizedString("Showing forecast for \(Int(roundedValue)) day(s)",
-                comment: "")
+            self.forecastMenu.setForecastDaysAmount(with: roundedValue.toInteger)
+            self.currentDaysAmountLabel.text = "Showing forecast for \(roundedValue.toInteger) day(s)".localized
         }).disposed(by: disposeBag)
     }
 
