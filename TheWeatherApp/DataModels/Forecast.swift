@@ -9,12 +9,12 @@
 import Foundation
 import CoreData
 
-class Forecast: Decodable {
-    var city: City?
-    var weatherDetails: [WeatherDetails]?
+//class Forecast: Decodable {
+//    var city: City?
+//    var weatherDetails: [WeatherDetails]?
     
-    enum CodingKeys: String, CodingKey {
-        case city
-        case weatherDetails = "list"
-    }
-}
+//    enum CodingKeys: String, CodingKey {
+//        case city
+//        case weatherDetails = "list"
+//    }
+//}

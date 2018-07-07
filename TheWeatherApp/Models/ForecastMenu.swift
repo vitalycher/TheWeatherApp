@@ -32,16 +32,16 @@ class ForecastMenu {
         let daysOffset = daysAmount - 1
 
         if let weatherDetails = forecast.weatherDetails {
-            let filteredWeatherDetailes = Array(weatherDetails).filter { weatherDetail in
-                if let dateOfForecastString = weatherDetail.dateOfCalculation,
-                    let forecastDate = dateFormatter.date(from: dateOfForecastString),
-                    let maximumDate = Calendar.current.date(byAdding: .day, value: daysOffset, to: currentDate)?.endOfDay {
-                    return forecastDate.isBetween(currentDate, and: maximumDate)
-                } else {
-                    return false
-                }
-            }
-            weatherDetailsForSelectedPeriod.accept(Array(filteredWeatherDetailes))
+//            let filteredWeatherDetailes = Array(weatherDetails).filter { weatherDetail in
+//                if let dateOfForecastString = weatherDetail.dateOfCalculation,
+//                    let forecastDate = dateFormatter.date(from: dateOfForecastString),
+//                    let maximumDate = Calendar.current.date(byAdding: .day, value: daysOffset, to: currentDate)?.endOfDay {
+//                    return forecastDate.isBetween(currentDate, and: maximumDate)
+//                } else {
+//                    return false
+//                }
+//            }
+//            weatherDetailsForSelectedPeriod.accept(Array(filteredWeatherDetailes))
         }
     }
 
@@ -63,18 +63,18 @@ class ForecastMenu {
         parameters["APPID"] = ForecastProviderArrangements.accessKey
         parameters["units"] = ForecastProviderArrangements.celsiusFormat
 
-        APIClient.shared.perform(Requests.makeWeatherRequest(withParameters: parameters)) { (completion) in
-            switch completion {
-            case .failure(let error):
-                self.errorPublishSubject.onNext(error)
-            case .singleObject(let forecast):
-                if let forecast = forecast {
-                    self.forecast = forecast
-                    self.setWeatherDetails(withDaysAmount: self.forecastDaysAmount)
-                }
-            default: break
-            }
-        }
+//        APIClient.shared.perform(Requests.makeWeatherRequest(withParameters: parameters)) { (completion) in
+//            switch completion {
+//            case .failure(let error):
+//                self.errorPublishSubject.onNext(error)
+//            case .singleObject(let forecast):
+//                if let forecast = forecast {
+//                    self.forecast = forecast
+//                    self.setWeatherDetails(withDaysAmount: self.forecastDaysAmount)
+//                }
+//            default: break
+//            }
+//        }
     }
 
 }

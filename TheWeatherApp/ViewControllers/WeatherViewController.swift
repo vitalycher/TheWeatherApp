@@ -92,7 +92,7 @@ extension WeatherViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GeneralForecastCollectionViewCell",
                                                       for: indexPath) as! GeneralForecastCollectionViewCell
         let weatherDetails = forecastMenu.weatherDetailsForSelectedPeriod.value
-        cell.configure(with: ForecastOverviewViewModel.init(weatherDetails[indexPath.row]))
+//        cell.configure(with: ForecastOverviewViewModel.init(weatherDetails[indexPath.row]))
         return cell
     }
 

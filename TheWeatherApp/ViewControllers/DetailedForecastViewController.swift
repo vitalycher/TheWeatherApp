@@ -35,13 +35,13 @@ class DetailedForecastViewController: UIViewController {
     }
 
     private func configureDetailedFields(with weatherDetails: WeatherDetails) {
-        let convertedDateString = DisplayDateService.convertedString(from: weatherDetails.dateOfCalculation)
+//        let convertedDateString = DisplayDateService.convertedString(from: weatherDetails.dateOfCalculation)
         
-        let fields = [
-            ForecastDetailedField(title: "Headline".localized, description:
-                weatherDetails.verbalDescription?.first?.headline),
-            ForecastDetailedField(title: "Forecast date".localized, description: convertedDateString),
-            ForecastDetailedField(title: "Minimum temperature, °C".localized, description: weatherDetails.generalParameters?.minimumTemperature?.toString)
+//        let fields = [
+//            ForecastDetailedField(title: "Headline".localized, description:
+//                weatherDetails.verbalDescription?.first?.headline),
+//            ForecastDetailedField(title: "Forecast date".localized, description: convertedDateString),
+//            ForecastDetailedField(title: "Minimum temperature, °C".localized, description: weatherDetails.generalParameters?.minimumTemperature?.toString)
 //            ForecastDetailedField(title: NSLocalizedString("Maximum temperature, °C", comment: ""), description: stringFromOptionalDoubleParameter(weatherDetails.generalParameters?.maximumTemperature)),
 //            ForecastDetailedField(title: NSLocalizedString("Average temperature, °C", comment: ""), description: stringFromOptionalDoubleParameter(weatherDetails.generalParameters?.averageTemperature)),
 //            ForecastDetailedField(title: NSLocalizedString("Humidity, %", comment: ""), description: stringFromOptionalDoubleParameter(weatherDetails.generalParameters?.humidity)),
@@ -49,8 +49,8 @@ class DetailedForecastViewController: UIViewController {
 //            ForecastDetailedField(title: NSLocalizedString("Average pressure, hPa", comment: ""), description: stringFromOptionalDoubleParameter(weatherDetails.generalParameters?.defaultPressure)),
 //            ForecastDetailedField(title: NSLocalizedString("Sea level pressure, hPa", comment: ""), description: stringFromOptionalDoubleParameter(weatherDetails.generalParameters?.seaLevelAtmoPressure)),
 //            ForecastDetailedField(title: NSLocalizedString("Ground level pressure, hPa", comment: ""), description: stringFromOptionalDoubleParameter(weatherDetails.generalParameters?.groundLevelAtmoPressure))
-        ]
-        forecastDetailedFields = fields.filter { $0.description != nil }
+//        ]
+//        forecastDetailedFields = fields.filter { $0.description != nil }
     }
 
 }

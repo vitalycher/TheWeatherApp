@@ -8,6 +8,6 @@
 
 import Foundation
 
-class City: Decodable {
-    var name: String?
-}
+//class City: Decodable {
+//    var name: String?
+//}
