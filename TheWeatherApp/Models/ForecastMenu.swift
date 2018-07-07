@@ -27,7 +27,7 @@ class ForecastMenu {
 
     private func setWeatherDetails(withDaysAmount daysAmount: Int) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.dateFormat = ForecastProviderArrangements.incomingDateFormat
         let currentDate = Date()
         let daysOffset = daysAmount - 1
 

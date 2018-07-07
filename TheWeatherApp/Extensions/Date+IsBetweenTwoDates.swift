@@ -1,5 +1,5 @@
 //
-//  Date + IsBetweenTwoDates.swift
+//  Date+IsBetweenTwoDates.swift
 //  TheWeatherApp
 //
 //  Created by Vitaly Chernysh on 05.07.2018.

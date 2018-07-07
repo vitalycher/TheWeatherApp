@@ -1,5 +1,5 @@
 //
-//  Date + EndOfDay.swift
+//  Date+EndOfDay.swift
 //  TheWeatherApp
 //
 //  Created by Vitaly Chernysh on 05.07.2018.

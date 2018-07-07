@@ -14,4 +14,5 @@ struct ForecastProviderArrangements {
     static let minimumDaysForecast = 1
     static let maximumDaysForecast = 5
     static let celsiusFormat = "metric"
+    static let incomingDateFormat = "yyyy-MM-dd HH:mm:ss"
 }

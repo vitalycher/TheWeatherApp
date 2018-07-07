@@ -20,21 +20,9 @@ struct ForecastOverviewViewModel: ForecastOverviewData {
 
     init(_ weatherDetails: WeatherDetails?) {
         let undefinedValue = NSLocalizedString("Undefined", comment: "")
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-
-        let displayDateFormatter = DateFormatter()
-        displayDateFormatter.dateFormat = "EEEE, MMM d, HH:mm"
-
-        let dateString = weatherDetails?.dateOfCalculation ?? undefinedValue
-        if let convertedDate = dateFormatter.date(from: dateString) {
-            date = displayDateFormatter.string(from: convertedDate)
-        } else {
-            date = undefinedValue
-        }
-
         let weatherDescription = weatherDetails?.verbalDescription?.first?.headline ?? undefinedValue
+
+        date = DisplayDateService.convertedString(from: weatherDetails?.dateOfCalculation) ?? undefinedValue
         verbalDescription = weatherDescription
         minumumTemperature = String(Int(weatherDetails?.generalParameters?.minimumTemperature ?? 0.0))
         maximumTemperature = String(Int(weatherDetails?.generalParameters?.maximumTemperature ?? 0.0))
