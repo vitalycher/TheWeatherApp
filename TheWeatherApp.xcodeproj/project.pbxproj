@@ -47,7 +47,6 @@
 		59DBC20220F10416006B5E95 /* BinaryFloatingPoint+StringRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DBC20120F10416006B5E95 /* BinaryFloatingPoint+StringRepresentation.swift */; };
 		59DBC20420F10470006B5E95 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DBC20320F10470006B5E95 /* String+Localized.swift */; };
 		59DBC22720F107ED006B5E95 /* PersistentStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DBC22620F107ED006B5E95 /* PersistentStorage.swift */; };
-		59DBC22D20F109DA006B5E95 /* WeatherAppDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 59DBC22B20F109DA006B5E95 /* WeatherAppDataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,7 +104,6 @@
 		59DBC20120F10416006B5E95 /* BinaryFloatingPoint+StringRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BinaryFloatingPoint+StringRepresentation.swift"; sourceTree = "<group>"; };
 		59DBC20320F10470006B5E95 /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
 		59DBC22620F107ED006B5E95 /* PersistentStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentStorage.swift; sourceTree = "<group>"; };
-		59DBC22C20F109DA006B5E95 /* WeatherAppDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherAppDataModel.xcdatamodel; sourceTree = "<group>"; };
 		A4EDCB4226145304E8224169 /* Pods-TheWeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheWeatherApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheWeatherApp/Pods-TheWeatherApp.release.xcconfig"; sourceTree = "<group>"; };
 		C6448D25CE2A91ECC9A13F56 /* Pods-TheWeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheWeatherApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheWeatherApp/Pods-TheWeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,7 +133,6 @@
 				5912884E20EC8DEE00F3AE48 /* LocationService.swift */,
 				59DBC22620F107ED006B5E95 /* PersistentStorage.swift */,
 				59DBC1F120F0D444006B5E95 /* DisplayDateService.swift */,
-				59DBC22B20F109DA006B5E95 /* WeatherAppDataModel.xcdatamodeld */,
 				59C1C7E720E4EC6500476E6E /* APIService */,
 			);
 			path = Services;
@@ -455,7 +452,6 @@
 				59DBC22720F107ED006B5E95 /* PersistentStorage.swift in Sources */,
 				59DBC20420F10470006B5E95 /* String+Localized.swift in Sources */,
 				59C1C7EC20E517E600476E6E /* City.swift in Sources */,
-				59DBC22D20F109DA006B5E95 /* WeatherAppDataModel.xcdatamodeld in Sources */,
 				5912886820EE626800F3AE48 /* Date+IsBetweenTwoDates.swift in Sources */,
 				59C1C7E520E4EC5B00476E6E /* Error.swift in Sources */,
 				5912884F20EC8DEE00F3AE48 /* LocationService.swift in Sources */,
@@ -725,19 +721,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		59DBC22B20F109DA006B5E95 /* WeatherAppDataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				59DBC22C20F109DA006B5E95 /* WeatherAppDataModel.xcdatamodel */,
-			);
-			currentVersion = 59DBC22C20F109DA006B5E95 /* WeatherAppDataModel.xcdatamodel */;
-			path = WeatherAppDataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 59A301D120E4E9AC007308B1 /* Project object */;
 }
