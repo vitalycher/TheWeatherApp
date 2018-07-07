@@ -25,6 +25,7 @@
 		59A301E220E4E9AC007308B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59A301E020E4E9AC007308B1 /* Main.storyboard */; };
 		59A301E420E4E9AE007308B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59A301E320E4E9AE007308B1 /* Assets.xcassets */; };
 		59A301E720E4E9AE007308B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59A301E520E4E9AE007308B1 /* LaunchScreen.storyboard */; };
+		59A6F44620F1141800F5AC2D /* Forecast+Decoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A6F44520F1141800F5AC2D /* Forecast+Decoding.swift */; };
 		59C1C7E220E4EC5B00476E6E /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C1C7DC20E4EC5A00476E6E /* JSON.swift */; };
 		59C1C7E420E4EC5B00476E6E /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C1C7DE20E4EC5A00476E6E /* Request.swift */; };
 		59C1C7E520E4EC5B00476E6E /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C1C7DF20E4EC5A00476E6E /* Error.swift */; };
@@ -81,6 +82,7 @@
 		59A301E320E4E9AE007308B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		59A301E620E4E9AE007308B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		59A301E820E4E9AE007308B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		59A6F44520F1141800F5AC2D /* Forecast+Decoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Forecast+Decoding.swift"; sourceTree = "<group>"; };
 		59C1C7DC20E4EC5A00476E6E /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		59C1C7DE20E4EC5A00476E6E /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		59C1C7DF20E4EC5A00476E6E /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			children = (
 				59A301DC20E4E9AC007308B1 /* AppDelegate.swift */,
 				5912885720ECE3AD00F3AE48 /* ForecastProviderArrangements.swift */,
+				59A6F43420F1113A00F5AC2D /* CoreDataFiles */,
 				5912886520EE172D00F3AE48 /* Protocols */,
 				5912886620EE173400F3AE48 /* ViewModels */,
 				5912885320ECC75700F3AE48 /* Services */,
@@ -237,6 +240,14 @@
 				59A301E820E4E9AE007308B1 /* Info.plist */,
 			);
 			path = TheWeatherApp;
+			sourceTree = "<group>";
+		};
+		59A6F43420F1113A00F5AC2D /* CoreDataFiles */ = {
+			isa = PBXGroup;
+			children = (
+				59A6F44520F1141800F5AC2D /* Forecast+Decoding.swift */,
+			);
+			path = CoreDataFiles;
 			sourceTree = "<group>";
 		};
 		59C1C7E720E4EC6500476E6E /* APIService */ = {
@@ -437,6 +448,7 @@
 				5912885820ECE3AD00F3AE48 /* ForecastProviderArrangements.swift in Sources */,
 				59C1C7F220E5288400476E6E /* CloudPercentage.swift in Sources */,
 				5912884B20EC12EB00F3AE48 /* Connectivity.swift in Sources */,
+				59A6F44620F1141800F5AC2D /* Forecast+Decoding.swift in Sources */,
 				59DBC1EF20F01A26006B5E95 /* DetailedForecastTableViewCell.swift in Sources */,
 				592BECA920F12D0F00A3348E /* Int+StringRepresentation.swift in Sources */,
 				59C1C7F620E52BD300476E6E /* WindDetails.swift in Sources */,

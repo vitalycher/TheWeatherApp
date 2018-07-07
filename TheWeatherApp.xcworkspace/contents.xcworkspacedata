@@ -2,6 +2,24 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:TheWeatherApp/CoreDataFiles/Forecast+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:TheWeatherApp/CoreDataFiles/Forecast+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:TheWeatherApp/CoreDataFiles/WeatherDetails+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:TheWeatherApp/CoreDataFiles/WeatherDetails+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:TheWeatherApp/CoreDataFiles/City+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:TheWeatherApp/CoreDataFiles/City+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:TheWeatherApp.xcodeproj">
    </FileRef>
    <FileRef
