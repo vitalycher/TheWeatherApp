@@ -39,16 +39,24 @@
                                 <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tXg-1b-zWu" customClass="BarChartView" customModule="TheWeatherApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="397.5" width="375" height="269.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="hvM-Kv-m9l" firstAttribute="leading" secondItem="ZfK-AG-IM7" secondAttribute="leading" id="27N-pA-zCY"/>
+                            <constraint firstItem="tXg-1b-zWu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8DD-oS-Bbz"/>
                             <constraint firstItem="ZfK-AG-IM7" firstAttribute="top" secondItem="hvM-Kv-m9l" secondAttribute="bottom" id="Q7R-7L-j4i"/>
                             <constraint firstItem="mTO-eq-DXE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Qbl-x5-3cQ"/>
                             <constraint firstItem="mTO-eq-DXE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="RJa-h5-brt"/>
+                            <constraint firstItem="tXg-1b-zWu" firstAttribute="top" secondItem="ZfK-AG-IM7" secondAttribute="bottom" constant="20" id="WoD-1W-ZWM"/>
                             <constraint firstItem="hvM-Kv-m9l" firstAttribute="top" secondItem="mTO-eq-DXE" secondAttribute="bottom" constant="20" id="YDw-iX-0wt"/>
                             <constraint firstItem="mTO-eq-DXE" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Z2S-Ic-3hU"/>
                             <constraint firstItem="mTO-eq-DXE" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.4" id="bTd-2N-Tu8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tXg-1b-zWu" secondAttribute="bottom" id="er6-5k-c7n"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tXg-1b-zWu" secondAttribute="trailing" id="nZa-yp-NXB"/>
                             <constraint firstItem="ZfK-AG-IM7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="q4P-A4-FH7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZfK-AG-IM7" secondAttribute="trailing" constant="50" id="wkG-oM-Jpk"/>
                         </constraints>
@@ -56,6 +64,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="s3g-o2-CGY"/>
                     <connections>
+                        <outlet property="barChartView" destination="tXg-1b-zWu" id="zEA-9R-ukZ"/>
                         <outlet property="collectionView" destination="mTO-eq-DXE" id="CRk-WS-ykK"/>
                         <outlet property="currentDaysAmountLabel" destination="hvM-Kv-m9l" id="9zr-7F-2CI"/>
                         <outlet property="slider" destination="ZfK-AG-IM7" id="de0-SW-vym"/>
