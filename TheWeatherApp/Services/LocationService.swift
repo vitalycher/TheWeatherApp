@@ -16,7 +16,7 @@ protocol LocationServiceDelegate: class {
 
 }
 
-class LocationService {
+final class LocationService {
     
     weak var delegate: LocationServiceDelegate?
     private let locationManager = CLLocationManager()

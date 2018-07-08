@@ -9,7 +9,9 @@
 import Foundation
 
 struct Requests {
-    static func makeWeatherRequest(withParameters parameters: [String : Any]) -> Request<Forecast> {
-        return Request<Forecast>(jsonUrlString: ForecastProviderArrangements.baseURL, method: .get, parameters: parameters, header: nil)
+
+    static func makeWeatherRequest(withParameters parameters: [String : Any]) -> Request<ForecastDecodable> {
+        return Request<ForecastDecodable>(jsonUrlString: ForecastProviderArrangements.baseURL, method: .get, parameters: parameters, header: nil)
     }
+
 }

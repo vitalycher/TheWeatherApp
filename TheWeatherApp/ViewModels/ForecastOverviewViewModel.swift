@@ -20,15 +20,15 @@ struct ForecastOverviewViewModel: ForecastOverviewData {
 
     init(_ weatherDetails: WeatherDetails?) {
         let undefinedValue = "Undefined".localized
-        let weatherDescription = weatherDetails?.verbalDescription?.first?.headline ?? undefinedValue
+        let weatherVerbalDescription = weatherDetails?.verbalDescriptionString ?? undefinedValue
 
-        date = DisplayDateService.convertedString(from: weatherDetails?.dateOfCalculation) ?? undefinedValue
-        verbalDescription = weatherDescription
-        minumumTemperature = weatherDetails?.generalParameters?.minimumTemperature?.toInteger.toString ?? undefinedValue
-        maximumTemperature = weatherDetails?.generalParameters?.maximumTemperature?.toInteger.toString ?? undefinedValue
-        humidity = weatherDetails?.generalParameters?.humidity?.toInteger.toString ?? undefinedValue
-        
-        switch weatherDescription {
+        date = weatherDetails?.convertedDateString ?? undefinedValue
+        verbalDescription = weatherVerbalDescription
+        minumumTemperature = weatherDetails?.generalWeatherParameters?.minimumTemperature?.intValue.toString ?? undefinedValue
+        maximumTemperature = weatherDetails?.generalWeatherParameters?.maximumTemperature?.intValue.toString ?? undefinedValue
+        humidity = weatherDetails?.generalWeatherParameters?.humidity?.intValue.toString ?? undefinedValue
+
+        switch weatherVerbalDescription {
         case "Clouds": weatherIcon = #imageLiteral(resourceName: "cloudy")
         case "Clear": weatherIcon = #imageLiteral(resourceName: "sunny")
         case "Rain": weatherIcon = #imageLiteral(resourceName: "rainy")

@@ -22,19 +22,19 @@ class BarChartView: UIView {
     private let mainLayer: CALayer = CALayer()
     private let scrollView: UIScrollView = UIScrollView()
 
-    private let barWidth: CGFloat = 40.0
-    private let spacing: CGFloat = 20.0
+    private let barWidth: CGFloat = 65.0
+    private let spacing: CGFloat = 10.0
     private let bottomSpaceToScrollView: CGFloat = 40.0
     private let topSpaceToScrollView: CGFloat = 20.0
     private var barLayers = [CALayer]()
 
     var charts: [ChartData]! {
         didSet {
-            mainLayer.sublayers?.forEach({$0.removeFromSuperlayer()})
+            mainLayer.sublayers?.forEach({ $0.removeFromSuperlayer() })
             
             if let charts = charts {
                 scrollView.contentSize = CGSize(width: (barWidth + spacing) * CGFloat(charts.count), height: frame.size.height)
-                mainLayer.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
+                mainLayer.frame = CGRect(x: 0.0, y: 0.0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
                 
                 for index in 0..<charts.count {
                     draw(chartAtIndex: index)
@@ -62,11 +62,9 @@ class BarChartView: UIView {
         addSubview(scrollView)
 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(touchReceived(_:)))
-        tapGestureRecognizer.numberOfTapsRequired = 1
-        tapGestureRecognizer.isEnabled = true
-        tapGestureRecognizer.cancelsTouchesInView = false
         scrollView.addGestureRecognizer(tapGestureRecognizer)
         scrollView.contentInset.right = 15.0
+        scrollView.contentInset.left = 15.0
     }
 
     @objc func touchReceived(_ sender: UITapGestureRecognizer) {
@@ -84,48 +82,32 @@ class BarChartView: UIView {
     private func draw(chartAtIndex index: Int) {
         let currentChart = charts[index]
 
-        let horizontalPosition = spacing + CGFloat(index) * (barWidth + spacing)
-        let verticalPosition = self.verticalPosition(fromHeight: currentChart.height)
+        let horizontalPosition = CGFloat(index) * (barWidth + spacing)
+        let verticalPosition = self.verticalPosition(fromHeight: currentChart.height / 30.0)
 
         drawBar(horizontalPosition: horizontalPosition, verticalPosition: verticalPosition, color: currentChart.color)
-        drawTopTitle(horizontalPosition: horizontalPosition - spacing / 2, verticalPosition: verticalPosition - 30.0, textValue: currentChart.topTitle, color: currentChart.color)
-        drawBottomTitle(horizontalPosition: horizontalPosition - spacing / 2, verticalPosition: mainLayer.frame.height -
-            bottomSpaceToScrollView + 10.0, title: currentChart.bottomTitle, color: currentChart.color)
+        drawTitle(horizontalPosition: horizontalPosition - spacing / 2, verticalPosition: verticalPosition - 30.0, textValue: currentChart.topTitle + "°C", color: currentChart.color, fontSize: 15.0)
+        drawTitle(horizontalPosition: horizontalPosition - spacing / 2, verticalPosition: mainLayer.frame.height -
+            bottomSpaceToScrollView + 10.0, textValue: currentChart.bottomTitle, color: currentChart.color, fontSize: 10.0)
     }
-    
+
     private func drawBar(horizontalPosition: CGFloat, verticalPosition: CGFloat, color: UIColor) {
         let barLayer = CALayer()
         barLayer.frame = CGRect(x: horizontalPosition, y: verticalPosition, width: barWidth,
                                 height: mainLayer.frame.height - bottomSpaceToScrollView - verticalPosition)
         barLayer.backgroundColor = color.cgColor
         barLayers.append(barLayer)
-        barLayer.cornerRadius = 10.0
         mainLayer.addSublayer(barLayer)
     }
 
-    private func drawTopTitle(horizontalPosition: CGFloat, verticalPosition: CGFloat, textValue: String, color: UIColor) {
+    private func drawTitle(horizontalPosition: CGFloat, verticalPosition: CGFloat, textValue: String, color: UIColor, fontSize: CGFloat) {
         let textLayer = CATextLayer()
         textLayer.frame = CGRect(x: horizontalPosition, y: verticalPosition, width: barWidth + spacing, height: 22.0)
         textLayer.foregroundColor = color.cgColor
-        textLayer.backgroundColor = UIColor.clear.cgColor
         textLayer.alignmentMode = kCAAlignmentCenter
         textLayer.contentsScale = UIScreen.main.scale
-        textLayer.font = CTFontCreateWithName(UIFont.systemFont(ofSize: 0.0).fontName as CFString, 0.0, nil)
-        textLayer.fontSize = 12.0
-        textLayer.string = textValue + "°C"
-        mainLayer.addSublayer(textLayer)
-    }
-
-    private func drawBottomTitle(horizontalPosition: CGFloat, verticalPosition: CGFloat, title: String, color: UIColor) {
-        let textLayer = CATextLayer()
-        textLayer.frame = CGRect(x: horizontalPosition, y: verticalPosition, width: barWidth + spacing, height: 22.0)
-        textLayer.foregroundColor = color.cgColor
-        textLayer.backgroundColor = UIColor.clear.cgColor
-        textLayer.alignmentMode = kCAAlignmentCenter
-        textLayer.contentsScale = UIScreen.main.scale
-        textLayer.font = CTFontCreateWithName(UIFont.systemFont(ofSize: 0.0).fontName as CFString, 0.0, nil)
-        textLayer.fontSize = 12.0
-        textLayer.string = title
+        textLayer.fontSize = fontSize
+        textLayer.string = textValue
         mainLayer.addSublayer(textLayer)
     }
 

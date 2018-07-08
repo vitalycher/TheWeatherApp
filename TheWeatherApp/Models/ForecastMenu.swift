@@ -14,12 +14,16 @@ import Alamofire
 
 class ForecastMenu {
 
-    var didRecieveError: Observable<Error> {
+    var didReceiveError: Observable<Error> {
         return errorPublishSubject.asObservable()
     }
 
-    private(set) var forecast = Forecast()
-    private(set) var weatherDetailsForSelectedPeriod = BehaviorRelay(value: [WeatherDetails()])
+    private(set) var forecast: Forecast! {
+        didSet {
+            setWeatherDetails(withDaysAmount: forecastDaysAmount)
+        }
+    }
+    private(set) var weatherDetailsForSelectedPeriod: BehaviorRelay<[WeatherDetails]?> = BehaviorRelay(value: nil)
     private(set) var forecastDaysAmount = ForecastProviderArrangements.minimumDaysForecast
 
     private let disposeBag = DisposeBag()
@@ -31,18 +35,19 @@ class ForecastMenu {
         let currentDate = Date()
         let daysOffset = daysAmount - 1
 
-        if let weatherDetails = forecast.weatherDetails {
-            let filteredWeatherDetailes = Array(weatherDetails).filter { weatherDetail in
-                if let dateOfForecastString = weatherDetail.dateOfCalculation,
-                    let forecastDate = dateFormatter.date(from: dateOfForecastString),
-                    let maximumDate = Calendar.current.date(byAdding: .day, value: daysOffset, to: currentDate)?.endOfDay {
-                    return forecastDate.isBetween(currentDate, and: maximumDate)
-                } else {
-                    return false
-                }
+        guard let forecast = forecast else { return }
+        
+        let weatherDetails = forecast.sortedWeatherDetails
+        let filteredWeatherDetailes = weatherDetails.filter { weatherDetail in
+            if let dateOfForecastString = weatherDetail.dateOfCalculation,
+                let forecastDate = dateFormatter.date(from: dateOfForecastString),
+                let maximumDate = Calendar.current.date(byAdding: .day, value: daysOffset, to: currentDate)?.endOfDay {
+                return forecastDate.isBetween(currentDate, and: maximumDate)
+            } else {
+                return false
             }
-            weatherDetailsForSelectedPeriod.accept(Array(filteredWeatherDetailes))
         }
+        weatherDetailsForSelectedPeriod.accept(filteredWeatherDetailes)
     }
 
     func setForecastDaysAmount(with daysAmount: Int) {
@@ -52,7 +57,7 @@ class ForecastMenu {
 
     func fetchForecast(with coordinate: CLLocationCoordinate2D) {
         guard Connectivity.isInternetReachable else {
-            //Fetch forecast from CoreData
+            self.forecast = PersistentStorage.shared.forecast()
             return
         }
 
@@ -70,7 +75,6 @@ class ForecastMenu {
             case .singleObject(let forecast):
                 if let forecast = forecast {
                     self.forecast = forecast
-                    self.setWeatherDetails(withDaysAmount: self.forecastDaysAmount)
                 }
             default: break
             }

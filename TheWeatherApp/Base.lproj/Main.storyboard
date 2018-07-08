@@ -19,12 +19,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZfK-AG-IM7">
-                                <rect key="frame" x="48" y="347.5" width="279" height="31"/>
+                                <rect key="frame" x="48" y="356.5" width="279" height="31"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </slider>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mTO-eq-DXE">
-                                <rect key="frame" x="0.0" y="45" width="375" height="267"/>
+                                <rect key="frame" x="0.0" y="54" width="375" height="267"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="40O-qS-oxL">
                                     <size key="itemSize" width="50" height="50"/>
@@ -34,28 +34,37 @@
                                 </collectionViewFlowLayout>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvM-Kv-m9l">
-                                <rect key="frame" x="50" y="332" width="27" height="15.5"/>
+                                <rect key="frame" x="50" y="341" width="27" height="15.5"/>
                                 <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="11"/>
                                 <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tXg-1b-zWu" customClass="BarChartView" customModule="TheWeatherApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="397.5" width="375" height="269.5"/>
+                                <rect key="frame" x="0.0" y="406.5" width="375" height="260.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acc-Gz-8e0">
+                                <rect key="frame" x="15" y="35" width="25" height="14"/>
+                                <fontDescription key="fontDescription" name="KohinoorBangla-Semibold" family="Kohinoor Bangla" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="acc-Gz-8e0" secondAttribute="trailing" constant="15" id="1pL-S3-1Cs"/>
                             <constraint firstItem="hvM-Kv-m9l" firstAttribute="leading" secondItem="ZfK-AG-IM7" secondAttribute="leading" id="27N-pA-zCY"/>
+                            <constraint firstItem="acc-Gz-8e0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="7gn-ss-6CE"/>
                             <constraint firstItem="tXg-1b-zWu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8DD-oS-Bbz"/>
+                            <constraint firstItem="mTO-eq-DXE" firstAttribute="top" secondItem="acc-Gz-8e0" secondAttribute="bottom" constant="5" id="IZF-O3-6AJ"/>
                             <constraint firstItem="ZfK-AG-IM7" firstAttribute="top" secondItem="hvM-Kv-m9l" secondAttribute="bottom" id="Q7R-7L-j4i"/>
                             <constraint firstItem="mTO-eq-DXE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Qbl-x5-3cQ"/>
-                            <constraint firstItem="mTO-eq-DXE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="RJa-h5-brt"/>
                             <constraint firstItem="tXg-1b-zWu" firstAttribute="top" secondItem="ZfK-AG-IM7" secondAttribute="bottom" constant="20" id="WoD-1W-ZWM"/>
                             <constraint firstItem="hvM-Kv-m9l" firstAttribute="top" secondItem="mTO-eq-DXE" secondAttribute="bottom" constant="20" id="YDw-iX-0wt"/>
                             <constraint firstItem="mTO-eq-DXE" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Z2S-Ic-3hU"/>
                             <constraint firstItem="mTO-eq-DXE" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.4" id="bTd-2N-Tu8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tXg-1b-zWu" secondAttribute="bottom" id="er6-5k-c7n"/>
+                            <constraint firstItem="acc-Gz-8e0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="jQm-dY-E3q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tXg-1b-zWu" secondAttribute="trailing" id="nZa-yp-NXB"/>
                             <constraint firstItem="ZfK-AG-IM7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="q4P-A4-FH7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZfK-AG-IM7" secondAttribute="trailing" constant="50" id="wkG-oM-Jpk"/>
@@ -65,6 +74,7 @@
                     <navigationItem key="navigationItem" id="s3g-o2-CGY"/>
                     <connections>
                         <outlet property="barChartView" destination="tXg-1b-zWu" id="zEA-9R-ukZ"/>
+                        <outlet property="cityLabel" destination="acc-Gz-8e0" id="h3T-cY-DJN"/>
                         <outlet property="collectionView" destination="mTO-eq-DXE" id="CRk-WS-ykK"/>
                         <outlet property="currentDaysAmountLabel" destination="hvM-Kv-m9l" id="9zr-7F-2CI"/>
                         <outlet property="slider" destination="ZfK-AG-IM7" id="de0-SW-vym"/>

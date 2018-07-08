@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17D47" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="City" representedClassName="City" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="forecast" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Forecast" inverseName="city" inverseEntity="Forecast" syncable="YES"/>
+    </entity>
+    <entity name="CloudPercentage" representedClassName="CloudPercentage" syncable="YES" codeGenerationType="class">
+        <attribute name="cloudiness" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="weatherDetails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeatherDetails" inverseName="cloudPercentage" inverseEntity="WeatherDetails" syncable="YES"/>
+    </entity>
+    <entity name="Forecast" representedClassName="Forecast" syncable="YES" codeGenerationType="class">
+        <relationship name="city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="forecast" inverseEntity="City" syncable="YES"/>
+        <relationship name="weatherDetails" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WeatherDetails" inverseName="forecast" inverseEntity="WeatherDetails" syncable="YES"/>
+    </entity>
+    <entity name="GeneralWeatherParameters" representedClassName="GeneralWeatherParameters" syncable="YES" codeGenerationType="class">
+        <attribute name="averageTemperature" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="defaultPressure" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="groundLevelAtmoPressure" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="humidity" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="maximumTemperature" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="minimumTemperature" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="seaLevelAtmoPressure" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="weatherDetails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeatherDetails" inverseName="generalWeatherParameters" inverseEntity="WeatherDetails" syncable="YES"/>
+    </entity>
+    <entity name="VerbalWeatherDescription" representedClassName="VerbalWeatherDescription" syncable="YES" codeGenerationType="class">
+        <attribute name="headline" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="weatherDetails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeatherDetails" inverseName="verbalWeatherDescription" inverseEntity="WeatherDetails" syncable="YES"/>
+    </entity>
+    <entity name="WeatherDetails" representedClassName="WeatherDetails" syncable="YES" codeGenerationType="class">
+        <attribute name="dateOfCalculation" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="cloudPercentage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CloudPercentage" inverseName="weatherDetails" inverseEntity="CloudPercentage" syncable="YES"/>
+        <relationship name="forecast" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Forecast" inverseName="weatherDetails" inverseEntity="Forecast" syncable="YES"/>
+        <relationship name="generalWeatherParameters" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GeneralWeatherParameters" inverseName="weatherDetails" inverseEntity="GeneralWeatherParameters" syncable="YES"/>
+        <relationship name="verbalWeatherDescription" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="VerbalWeatherDescription" inverseName="weatherDetails" inverseEntity="VerbalWeatherDescription" syncable="YES"/>
+        <relationship name="windDetails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WindDetails" inverseName="weatherDetails" inverseEntity="WindDetails" syncable="YES"/>
+    </entity>
+    <entity name="WindDetails" representedClassName="WindDetails" syncable="YES" codeGenerationType="class">
+        <attribute name="degrees" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="speed" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="weatherDetails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeatherDetails" inverseName="windDetails" inverseEntity="WeatherDetails" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="City" positionX="-558" positionY="-237" width="128" height="73"/>
+        <element name="CloudPercentage" positionX="18" positionY="45" width="128" height="73"/>
+        <element name="Forecast" positionX="-344" positionY="-396" width="128" height="73"/>
+        <element name="GeneralWeatherParameters" positionX="-432" positionY="45" width="164" height="163"/>
+        <element name="VerbalWeatherDescription" positionX="-171" positionY="45" width="153" height="73"/>
+        <element name="WeatherDetails" positionX="-117" positionY="-270" width="162" height="133"/>
+        <element name="WindDetails" positionX="286" positionY="29" width="128" height="88"/>
+    </elements>
+</model>
