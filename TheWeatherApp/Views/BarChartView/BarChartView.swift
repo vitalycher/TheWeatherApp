@@ -31,6 +31,7 @@ class BarChartView: UIView {
     var charts: [ChartData]! {
         didSet {
             mainLayer.sublayers?.forEach({ $0.removeFromSuperlayer() })
+            barLayers.removeAll()
             
             if let charts = charts {
                 scrollView.contentSize = CGSize(width: (barWidth + spacing) * CGFloat(charts.count), height: frame.size.height)
@@ -79,6 +80,11 @@ class BarChartView: UIView {
         }
     }
 
+    private func verticalPosition(fromHeight height: Float) -> CGFloat {
+        let height = CGFloat(height) * (mainLayer.frame.height - bottomSpaceToScrollView - topSpaceToScrollView)
+        return mainLayer.frame.height - bottomSpaceToScrollView - height
+    }
+
     private func draw(chartAtIndex index: Int) {
         let currentChart = charts[index]
 
@@ -109,11 +115,6 @@ class BarChartView: UIView {
         textLayer.fontSize = fontSize
         textLayer.string = textValue
         mainLayer.addSublayer(textLayer)
-    }
-
-    private func verticalPosition(fromHeight height: Float) -> CGFloat {
-        let height = CGFloat(height) * (mainLayer.frame.height - bottomSpaceToScrollView - topSpaceToScrollView)
-        return mainLayer.frame.height - bottomSpaceToScrollView - height
     }
 
 }
