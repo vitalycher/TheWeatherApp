@@ -58,7 +58,7 @@ class ForecastMenu {
 
     func fetchForecast(with coordinate: CLLocationCoordinate2D, completed: @escaping () -> Void) {
         guard Connectivity.isInternetReachable else {
-            self.forecast = PersistentStorage.shared.forecast()
+            forecast = PersistentStorage.shared.forecast()
             completed()
             return
         }
