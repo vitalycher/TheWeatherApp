@@ -10,7 +10,9 @@ import Foundation
 import Alamofire
 
 protocol Extractor {
+
     func error(from response: DataResponse<Any>) -> Error?
+
 }
 
 class ResponseErrorExtractor: Extractor {

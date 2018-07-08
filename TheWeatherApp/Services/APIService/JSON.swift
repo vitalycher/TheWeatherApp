@@ -53,10 +53,10 @@ struct JSON: Decodable {
             } else if let stringValue = try? container.decode(String.self) {
                 value = stringValue
             } else {
-                throw DecodingError.dataCorruptedError(in: container, debugDescription: "The container contains nothing serializable")
+                throw DecodingError.dataCorruptedError(in: container, debugDescription: "The container contains nothing serializable".localized)
             }
         } else {
-            throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Could not serialize"))
+            throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Could not serialize".localized))
         }
     }
     

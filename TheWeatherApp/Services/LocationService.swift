@@ -10,11 +10,13 @@ import Foundation
 import CoreLocation
 
 protocol LocationServiceDelegate: class {
+
     func locationService(_ service: LocationService, didFetchCoordinate coordinate: CLLocationCoordinate2D)
     func locationServiceDidRejectUpdatingCoordinate(service: LocationService)
+
 }
 
-class LocationService {
+final class LocationService {
     
     weak var delegate: LocationServiceDelegate?
     private let locationManager = CLLocationManager()

@@ -10,10 +10,12 @@ import Foundation
 import UIKit
 
 protocol ForecastOverviewData {
+
     var date: String { get }
     var verbalDescription: String { get }
     var minumumTemperature: String { get }
     var maximumTemperature: String { get }
     var humidity: String { get }
     var weatherIcon: UIImage { get }
+
 }
