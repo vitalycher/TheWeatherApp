@@ -187,8 +187,8 @@
 			isa = PBXGroup;
 			children = (
 				59B254BA20F17B480079AA94 /* GeneralForecastCollectionViewCell */,
-				59B254BB20F17B5A0079AA94 /* BarChartView */,
 				59B254B920F17B310079AA94 /* DetailedForecastTableViewCell */,
+				59B254BB20F17B5A0079AA94 /* BarChartView */,
 			);
 			path = Views;
 			sourceTree = "<group>";

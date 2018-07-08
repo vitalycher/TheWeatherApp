@@ -26,6 +26,8 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        cityLabel.text = "Loading...".localized
+
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(UINib(nibName: "GeneralForecastCollectionViewCell", bundle: nil),
@@ -43,7 +45,7 @@ class WeatherViewController: UIViewController {
             self.currentDaysAmountLabel.text = "Showing forecast for \(roundedValue.toInteger) day(s)".localized
         }).disposed(by: disposeBag)
 
-        barChartView.didSelectChartIndex.subscribe { chartIndex in
+        barChartView.didSelectChartAtIndex.subscribe { chartIndex in
             if let indexValue = chartIndex.element {
                 let indexPath = IndexPath(row: indexValue, section: 0)
                 self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
@@ -52,7 +54,7 @@ class WeatherViewController: UIViewController {
         }.disposed(by: disposeBag)
     }
 
-    func configureTemperatureCharts(for weatherDetails: [WeatherDetails]?)  {
+    private func configureTemperatureCharts(for weatherDetails: [WeatherDetails]?)  {
         guard let weatherDetails = weatherDetails else { return }
 
         var charts = [ChartData]()
@@ -75,7 +77,9 @@ class WeatherViewController: UIViewController {
     }
 
     private func configureForecastMenu(withCoordinate coordinate: CLLocationCoordinate2D) {
-        forecastMenu.fetchForecast(with: coordinate)
+        forecastMenu.fetchForecast(with: coordinate) {
+            self.cityLabel.text = "Showing forecast for ".localized + (self.forecastMenu.forecast.city?.name ?? "you".localized)
+        }
         createForecastMenuSubscriptions()
     }
 

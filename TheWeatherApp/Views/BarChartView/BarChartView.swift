@@ -13,7 +13,7 @@ import RxSwift
 
 class BarChartView: UIView {
 
-    var didSelectChartIndex: Observable<Int> {
+    var didSelectChartAtIndex: Observable<Int> {
         return chartIndexPublishSubject.asObservable()
     }
 

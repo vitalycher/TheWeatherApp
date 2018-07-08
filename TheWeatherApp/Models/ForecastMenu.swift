@@ -23,6 +23,7 @@ class ForecastMenu {
             setWeatherDetails(withDaysAmount: forecastDaysAmount)
         }
     }
+
     private(set) var weatherDetailsForSelectedPeriod: BehaviorRelay<[WeatherDetails]?> = BehaviorRelay(value: nil)
     private(set) var forecastDaysAmount = ForecastProviderArrangements.minimumDaysForecast
 
@@ -55,9 +56,10 @@ class ForecastMenu {
         setWeatherDetails(withDaysAmount: daysAmount)
     }
 
-    func fetchForecast(with coordinate: CLLocationCoordinate2D) {
+    func fetchForecast(with coordinate: CLLocationCoordinate2D, completed: @escaping () -> Void) {
         guard Connectivity.isInternetReachable else {
             self.forecast = PersistentStorage.shared.forecast()
+            completed()
             return
         }
 
@@ -75,6 +77,7 @@ class ForecastMenu {
             case .singleObject(let forecast):
                 if let forecast = forecast {
                     self.forecast = forecast
+                    completed()
                 }
             default: break
             }
