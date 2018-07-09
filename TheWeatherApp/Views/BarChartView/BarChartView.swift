@@ -89,10 +89,10 @@ class BarChartView: UIView {
         let currentChart = charts[index]
 
         let horizontalPosition = CGFloat(index) * (barWidth + spacing)
-        let verticalPosition = self.verticalPosition(fromHeight: currentChart.height / 30.0)
+        let verticalPosition = self.verticalPosition(fromHeight: currentChart.height / 35.0)
 
         drawBar(horizontalPosition: horizontalPosition, verticalPosition: verticalPosition, color: currentChart.color)
-        drawTitle(horizontalPosition: horizontalPosition - spacing / 2, verticalPosition: verticalPosition - 30.0, textValue: currentChart.topTitle + "°C", color: currentChart.color, fontSize: 15.0)
+        drawTitle(horizontalPosition: horizontalPosition - spacing / 2, verticalPosition: verticalPosition - 30.0, textValue: currentChart.topTitle + "°C", color: currentChart.color, fontSize: 14.0)
         drawTitle(horizontalPosition: horizontalPosition - spacing / 2, verticalPosition: mainLayer.frame.height -
             bottomSpaceToScrollView + 10.0, textValue: currentChart.bottomTitle, color: currentChart.color, fontSize: 10.0)
     }
