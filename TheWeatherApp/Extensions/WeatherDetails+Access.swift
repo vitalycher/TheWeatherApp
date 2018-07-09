@@ -20,7 +20,7 @@ extension WeatherDetails {
         dateFormatter.dateFormat = ForecastProviderArrangements.incomingDateFormat
         
         let displayDateFormatter = DateFormatter()
-        displayDateFormatter.dateFormat = "EEEE, MMM d, HH:mm"
+        displayDateFormatter.dateFormat = "EEEE, d MMMM, HH:mm"
         
         if let convertedDate = dateFormatter.date(from: dateOfCalculation ?? "") {
             return displayDateFormatter.string(from: convertedDate)

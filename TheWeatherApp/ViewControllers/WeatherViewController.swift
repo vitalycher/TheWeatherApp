@@ -63,7 +63,7 @@ class WeatherViewController: UIViewController {
         incomingDateFormatter.dateFormat = ForecastProviderArrangements.incomingDateFormat
 
         let displayDateFormatter = DateFormatter()
-        displayDateFormatter.dateFormat = "MMM d, HH:mm"
+        displayDateFormatter.dateFormat = "d MMM, HH:mm"
 
         weatherDetails.forEach {
             if let maximumTemperature = $0.generalWeatherParameters?.maximumTemperature?.floatValue,
