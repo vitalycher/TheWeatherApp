@@ -13,7 +13,7 @@ protocol ForecastOverviewData {
 
     var date: String { get }
     var verbalDescription: String { get }
-    var minumumTemperature: String { get }
+    var minimumTemperature: String { get }
     var maximumTemperature: String { get }
     var humidity: String { get }
     var weatherIcon: UIImage { get }

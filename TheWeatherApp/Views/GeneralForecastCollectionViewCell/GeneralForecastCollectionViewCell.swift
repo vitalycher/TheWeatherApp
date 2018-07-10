@@ -28,7 +28,7 @@ class GeneralForecastCollectionViewCell: UICollectionViewCell {
     func configure(with dataProvider: ForecastOverviewData) {
         dateLabel.text = dataProvider.date
         verbalDescriptionLabel.text = dataProvider.verbalDescription
-        minimumTemperatureLabel.text = "MIN TEMPERATURE \n".localized + dataProvider.minumumTemperature + "°C"
+        minimumTemperatureLabel.text = "MIN TEMPERATURE \n".localized + dataProvider.minimumTemperature + "°C"
         maximumTemperatureLabel.text = "MAX TEMPERATURE \n".localized + dataProvider.maximumTemperature + "°C"
         humidityLabel.text = "HUMIDITY \n".localized + dataProvider.humidity + "%"
         weatherIconImageView.image = dataProvider.weatherIcon

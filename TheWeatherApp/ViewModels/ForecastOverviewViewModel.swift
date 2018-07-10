@@ -13,7 +13,7 @@ struct ForecastOverviewViewModel: ForecastOverviewData {
 
     var date: String
     var verbalDescription: String
-    var minumumTemperature: String
+    var minimumTemperature: String
     var maximumTemperature: String
     var humidity: String
     var weatherIcon: UIImage
@@ -24,7 +24,7 @@ struct ForecastOverviewViewModel: ForecastOverviewData {
 
         date = weatherDetails?.convertedDateString ?? undefinedValue
         verbalDescription = weatherVerbalDescription
-        minumumTemperature = weatherDetails?.generalWeatherParameters?.minimumTemperature?.intValue.toString ?? undefinedValue
+        minimumTemperature = weatherDetails?.generalWeatherParameters?.minimumTemperature?.intValue.toString ?? undefinedValue
         maximumTemperature = weatherDetails?.generalWeatherParameters?.maximumTemperature?.intValue.toString ?? undefinedValue
         humidity = weatherDetails?.generalWeatherParameters?.humidity?.intValue.toString ?? undefinedValue
 
