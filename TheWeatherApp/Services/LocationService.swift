@@ -16,17 +16,17 @@ protocol LocationServiceDelegate: class {
 
 }
 
-final class LocationService {
-    
+final class LocationService: NSObject {
+
     weak var delegate: LocationServiceDelegate?
     private let locationManager = CLLocationManager()
 
-    func authorizeAndFetchCoordinates() {
+    func authorizeAndFetchCoordinate() {
+        locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        updateCoordinateIfAuthorized()
     }
 
-    private func updateCoordinateIfAuthorized() {
+    private func fetchCoordinate() {
         if CLLocationManager.locationServicesEnabled() {
             if let coordinate = locationManager.location?.coordinate {
                 delegate?.locationService(self, didFetchCoordinate: coordinate)
@@ -35,5 +35,15 @@ final class LocationService {
             delegate?.locationServiceDidRejectUpdatingCoordinate(service: self)
         }
     }
-    
+
+}
+
+extension LocationService: CLLocationManagerDelegate {
+
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            fetchCoordinate()
+        }
+    }
+
 }

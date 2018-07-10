@@ -34,7 +34,7 @@ class WeatherViewController: UIViewController {
                                 forCellWithReuseIdentifier: "GeneralForecastCollectionViewCell")
 
         locationService.delegate = self
-        locationService.authorizeAndFetchCoordinates()
+        locationService.authorizeAndFetchCoordinate()
 
         configureSliderParameters()
 
